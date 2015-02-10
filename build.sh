@@ -69,6 +69,73 @@ case "$1" in
         export LD_LIBRARY_PATH=$CROSS_TOOLS/lib:$LD_LIBRARY_PATH
         export PKG_CONFIG_PATH=$CROSS_TOOLS/lib/pkgconfig:$PKG_CONFIG_PATH
         ./configure --prefix=$ARM_MPLAYER_PREFIX \
+                        --disable-mencoder \
+                        --enable-mplayer \
+                        --disable-gui \
+                        --disable-gtk1 \
+                        --disable-termcap \
+                        --enable-iconv \
+                        --enable-langinfo \
+                        --disable-lirc \
+                        --disable-lircc \
+                        --disable-joystick \
+                        --disable-apple-remote \
+                        --enable-apple-ir \
+                        --disable-vm \
+                        --disable-xf86keysym \
+                        --disable-radio \
+                        --enable-radio-capture \
+                        --enable-radio-v4l2 \
+                        --disable-radio-bsdbt848 \
+                        --enable-tv \
+                        --disable-tv-v4l1 \
+                        --enable-tv-v4l2 \
+                        --disable-tv-bsdbt848 \
+                        --enable-pvr \
+                        --enable-rtc \
+                        --enable-networking \
+                        --disable-winsock2_h \
+                        --disable-smb \
+                        --disable-live \
+                        --disable-nemesi \
+                        --disable-librtmp \
+                        --enable-vcd \
+                        --disable-bluray \
+                        --enable-libdvdcss-internal \
+                        --disable-cdparanoia \
+                        --disable-cddb \
+                        --enable-bitmap-font \
+                        --enable-freetype \
+                        --enable-unrarexec \
+                        --disable-menu \
+                        --enable-sortsub \
+                        --disable-fribidi \
+                        --disable-enca \
+                        --disable-maemo \
+                        --disable-macosx-finder \
+                        --disable-macosx-bundle \
+                        --enable-inet6 \
+                        --disable-sctp \
+                        --enable-gethostbyname2 \
+                        --enable-ftp \
+                        --disable-vstream \
+                        --disable-w32threads \
+                        --disable-os2threads \
+                        --disable-ass-internal \
+                        --disable-ass \
+                        --disable-rpath \
+                    --enable-png \
+                    --enable-jpeg \
+                    --enable-speex \
+                    --enable-theora \
+                    --enable-faad \
+                    --enable-faac \
+                    --enable-faac-lavc \
+                    --enable-mad \
+                    --enable-mp3lib \
+                    --disable-decoder=AAC \
+                        --enable-fbdev \
+                        --enable-alsa \
                     --disable-runtime-cpudetection \
                     --enable-cross-compile \
                     --cc=arm-none-linux-gnueabi-gcc \
@@ -78,20 +145,24 @@ case "$1" in
                     --ar=arm-none-linux-gnueabi-ar \
                     --ranlib=arm-none-linux-gnueabi-ranlib \
                     --target=arm-linux \
+                        --enable-armv5te \
+                        --enable-vfpv3 \
+                        --enable-neon \
+                    --with-freetype-config="/home/tobyzxj/tools/arm-2013.11/arm-none-linux-gnueabi/libc/usr/bin/freetype-config"
         ;;
     make)
         echo "Make mplayer..."
-        make
+        make -j4
         ;;
     clean)
         echo "Clean code..."
-        make clean
+        git clean -fd
         ;;
     *)
         echo "Usage: $0 [OPTIONS]..."
         echo "  config --> run configure"
         echo "  make   --> make Makefile"
-        echo "  clean  --> make clean"
+        echo "  clean  --> git clean -fd"
 esac
 exit 0
 

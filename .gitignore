@@ -30,3 +30,26 @@
 
 # add tobyzxj
 ss/
+
+# for mplayer
+*.d
+DOCS/xml/en/main.xml
+DOCS/xml/html-chunk.xsl
+DOCS/xml/html-single.xsl
+config.h
+config.log
+config.mak
+ffmpeg/.config
+ffmpeg/config.h
+ffmpeg/config.mak
+ffmpeg/libavutil/avconfig.h
+
+codec-cfg
+codecs.conf.h
+ffmpeg/.version
+ffmpeg/libavcodec/codec_names.h
+ffmpeg/version.h
+help_mp.h
+mplayer
+version.h
+
